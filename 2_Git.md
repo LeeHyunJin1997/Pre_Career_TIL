@@ -75,23 +75,38 @@
   - GitLab
   - GitHub (마이크로소프트)
   - Bitbucket
-
 - `git clone <url>` : 해당 url의 Repository를 현재 위치로 복사해옴
 
   - 복사한 repo는 이미 `git init`된 것과 같음
   - repo를 통째로 가져오는 것이기 때문에, 작업시 최초 1회 실행함 
-
 - `git pull` : commit 단위로 local repo로 가져옴
-
 - `git push` : commit 단위로 remote repo로 보냄
-
 - `git remote add origin <url>` : remote를 origin이라는 이름으로 연동
 
   - `origin` : 통상적으로  remote repo를 가리킴
   - `get push -u origin master` :  origin의 master로 보냄
     - `-u` : set upstream. 최초 1회, orgin의 master임을 지정하기 위함
 
-  
+
+
+
+# Conflict
+
+- 최신 버전으로 pull하지 않고 수정해 push한 경우, 충돌에러(Conflict) 발생
+
+
+
+# Vi
+
+- `vi <file.name>` : 해당 파일에 접근
+
+- `i` : INSERT. 내용 작성 가능
+
+- `:`  : 명령어 입력
+
+- `:wq` : 저장하고 종료
+
+
 
 
 
