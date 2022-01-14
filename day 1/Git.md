@@ -89,7 +89,7 @@
 
   - `origin` : 통상적으로  remote repo를 가리킴
   - `get push -u origin master` :  origin의 master로 보냄
-    - `-u` : origin을 지정한 바로 다음에 사용됨
+    - `-u` : set upstream. 최초 1회, orgin의 master임을 지정하기 위함
 
   
 
