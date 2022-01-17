@@ -84,7 +84,7 @@
 - `git remote add origin <url>` : remote를 origin이라는 이름으로 연동
 
   - `origin` : 통상적으로  remote repo를 가리킴
-  - `get push -u origin master` :  origin의 master로 보냄
+  - `git push -u origin master` :  origin의 master로 보냄
     - `-u` : set upstream. 최초 1회, orgin의 master임을 지정하기 위함
 
 
