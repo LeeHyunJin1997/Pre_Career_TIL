@@ -1,14 +1,4 @@
-## 220119
-
-- 백준 ( )
-
-- Github ( )
-
-- GitLab - homework( ), workshop( )
-
-- SWEA ( )
-
-  
+## 220105, Start
 
 
 
