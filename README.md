@@ -1,2 +1,14 @@
-## 220105, 시작
+## 220119
+
+- 백준 ( )
+
+- Github ( )
+
+- GitLab - homework( ), workshop( )
+
+- SWEA ( )
+
+  
+
+
 
