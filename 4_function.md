@@ -5,7 +5,7 @@
 
 
 
-### 추상화(Abstraction)
+## 추상화(Abstraction)
 
 복잡한 내용을 모르더라고 사용할 수 있도록(블랙박스)
 
@@ -13,7 +13,7 @@
 
 
 
-### 함수 기본 구조
+## 함수 기본 구조
 
 - 선언과 호출
   - 함수명() 으로 호출
@@ -53,7 +53,8 @@ def family(**kwagrs): #dictionary로 패킹
 
 
 
-- 문서화
+- 문서화(Document String)
+  - 함수나 클래스에 대한 설명
 - 범위(Scope)
   - Built-in scope : 실행된 이후 영원히 존재
   - Global scope : 코드 어디에서든 참조 가능, 한 파일(.py) 내에서 변수 유지
@@ -68,3 +69,21 @@ def family(**kwagrs): #dictionary로 패킹
   - Void function : return 값이 없음. None을 반환하고 종료
   - Value returning function : 실행 후, 특정 값을 반환하는 함수 
   - 함수는 단일 값만을 반환하므로, 두 개이상의 값이 필요하다면 튜플을 이용
+
+
+
+## Naming Convention
+
+- 함수와 parameter 이름을 짓는 법
+  - 상수(변치 않는 숫자) 이름은 영문 전체를 대문자
+  - 클래스 or 예외 이름은 단어 첫글자만 대문자
+  - 나머지는 소문자와 밑줄
+- 스스로를 설명해야함
+- 약어 사용을 지양해야함
+
+```python
+snake_case #스네이크 케이스
+PascalCase #파스칼 케이스(클래스 명)
+camelCase #카멜 케이스
+```
+
