@@ -21,6 +21,15 @@
 
 
 
+# 들여쓰기(Identation)
+
+- 문장을 구분할 때, 들여쓰기 사용
+- space 4칸 혹은 Tab
+  - space와 Tab 혼용 금지
+  - 원칙적으로는 space 권장
+
+
+
 
 ## 변수
 
