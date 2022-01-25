@@ -118,5 +118,14 @@
 
 
 
+# .gitignore
+
+- .gitignore 파일을 만들어 Git에서 버전 관리하지 않을 파일을 지정할 수 있음.
+  - `abc.txt` : 해당 파일을 무시
+  - `.txt` : 해당 확장자를 가진 파일을 전부 무시
+  - `data/` : 해당 폴더 전체를 무시
+- repository를 처음 시작할 때 README와 함께 생성
+  - gitignore.io에서 손쉽게 생성 가능
 
 
+- `git rm -cached <File Name>` : 이미 remote repository에 무시하고 싶은 파일이 올라가 있을 때 삭제
