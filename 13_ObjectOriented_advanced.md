@@ -55,27 +55,49 @@
 # 캡슐화 
 
 - 특성이나 메서드를 묶는 작업
+
 - 은닉성 : 객체의 구형 내용에 대해 외부로부터의 직접적인 엑세스를 차단
+
 - 응집도 : 모듈 중 자주 쓰는 것끼리 뭉쳐있음, 높을수록 좋음
+
 - 결합도 : 모듈 간 의존성이 있음, 낮을수록 좋음
+
 - 암묵적으로만 존재, 언어적으로 존재하지 않음
-- 접근제어자
-  - Public Access Modifier
-  - Protected Access Modifier
-  - Private Access Modifier
+
 - Public Member
   - 언더바 없이 시작하는 메서드나 속성
   - 어디서나 호출 가능, 하위 클래스의 override 허용
+  
 - Protected Member
   - 언더바 1개로 시작하는 메서드나 속성
-  - 부모 클래스 내부와 자식 클래스에서만 호출
+  - '암묵적 규칙에 의해' 부모 클래스 내부와 자식 클래스에서만 호출
+    - 파이썬에서는 외부에서 접근해도 오류가 나지는 않음
   - 하위클래스 override 허용
+  
 - Private Member
   - 언더바 2개로 시작하는 메서드나 속성
   - 본 클래스 내부에서만 사용가능
-  - 하위클래스 상속 및 호출, 외부 호출 불가능
+  - 하위클래스 상속 및 호출, 외부 호출 불가능 (오류)
+  - 내부적으로는  `__method()`의 이름이 name mangling
+    - name mangling : `_class__method()`로 바뀜
+    - 사실 `_class__method()`로는 접근가능
+  
 - 변수에 접근하기 위한 메서드
-  - getter 메서드 : 변수의 값을 읽음
-    - `@property` 데코레이터 사용
-  - setter 메서드 : 변수의 값을 설정
-    - `@변수.setter` 사용
+
+  ```python
+  
+  class classname:
+      @property 
+      def name(self): # getter : 변수의 값을 읽음
+          return self.__name
+  
+  
+      @name.setter
+      def name(self, new_name): # setter : 변수의 값을 설정
+          self.__name = new_name
+      
+  hyun.name = 'hyun' # 메서드를 속성처럼 사용가능
+  print(hyun.name)
+  ```
+
+  
