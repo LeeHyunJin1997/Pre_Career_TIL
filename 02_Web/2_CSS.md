@@ -90,13 +90,15 @@ h1{
 # CSS 적용 우선순위
 
 - 인라인 > id > class, 속성, pseudo-class > 요소
+  - class가 중첩된 경우, CSS에서 마지막으로 작성된 것이 적용 (덮어 씌워짐)
+
 
 
 
 # CSS 상속
 
 - 상속되는 속성
-  - Text 요소
+  - Text 요소, opacity
 - 상속되지 않는 속성
   - Box model 관련 요소
   - position 관련 요소

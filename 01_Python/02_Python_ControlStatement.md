@@ -28,7 +28,7 @@
 
 - enumerate 순회
 
-  - `list(enumerate())` : 인덱스를 붙인 효과
+  - (index, value) 형태의 튜플로 구성된 enumerate 객체를 반환
 
 - break
 
