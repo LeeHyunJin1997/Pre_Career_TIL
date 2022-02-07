@@ -38,23 +38,23 @@
 ```html
 <!DOCTYPE html>
 <html> 
-    
-<head>
-    <meta charset="UTF-8"> <!--메타데이터(인코딩)-->
-    <title>Document</title> <!--문서 제목-->
-    <link rel="stylesheet" href="style.css"> <!--외부참조 스타일 적용-->
-    <script src="javascript.js"></script> <!--스크립트 요소-->
-    <!--내부참조 스타일 적용-->
-    <style>
-    p {
-        color: black;
-        }
-    </style>
-</head>
-    
-<body>
-    
-</body>
+   
+    <head>
+        <meta charset="UTF-8"> <!--메타데이터(인코딩)-->
+        <title>Document</title> <!--문서 제목-->
+        <link rel="stylesheet" href="style.css"> <!--외부참조 스타일 적용-->
+        <script src="javascript.js"></script> <!--스크립트 요소-->
+        <!--내부참조 스타일 적용-->
+        <style>
+        p {
+            color: black;
+            }
+        </style>
+    </head>
+
+    <body>
+
+    </body>
 </html>
 ```
 

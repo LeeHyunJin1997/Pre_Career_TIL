@@ -112,5 +112,26 @@
 - radio : 단일 선택
 - color : 색상 선택
 - date : 날짜 선택
-
 - hidden : 사용자에게 보이지 않는 입력. 받아오진 않지만 서버에 전송되어야 하는 값을 설정
+
+
+
+# 간략하게 작성하기
+
+```html
+div.left*5
+
+<!--적용-->
+<div class="left"></div>
+<div class="left"></div>
+<div class="left"></div>
+<div class="left"></div>
+<div class="left"></div>
+```
+
+- `>` : 태그를 만들고 들여쓰기
+- `*n` : 반복
+- `+` : 줄바꿈 + 다음 태그 추가
+- `.` : class 지정
+- `#` : id 지정
+- `{content}` : 내용 입력
