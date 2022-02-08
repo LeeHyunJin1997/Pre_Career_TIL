@@ -38,8 +38,8 @@
 - flex-wrap : 개별아이템이 flexbox를 벗어나지 않도록 구성
 
   - wrap : 넘어가면 다음 줄에 배치 
-
   - nowrap : 기본값. 한 줄에 배치
+  - wrap-reverse : 아래부터 wrap
 
 ![image-20220207134641688](07_CSS_Flex.assets/image-20220207134641688.png)
 
@@ -57,7 +57,7 @@
 
 
 
-- align-content
+- align-content : 2줄 이상의 item 묶음(wrap)을 배치
   - flex-start : item의 묶음을 상단에 배치
   - flex-end : item의 묶음을 하단에 배치
   - center : item의 묶음을 중앙에 배치
@@ -87,3 +87,15 @@
   - center : 가운데
 
 ![image-20220207135622628](07_CSS_Flex.assets/image-20220207135622628.png)
+
+
+
+- Flex item 개별 속성
+  - `order` : Item의 순서를 설정
+  - `flex-grow` : 화면 크기에 따라 Item의 너비 증가(grow) 비율 설정
+  - `flex-shrink` : 화면 크기에 따라 Item의 너비 감소(shrink) 비율 설정
+  - `flex-basis` : Item의 기본 너비 설정
+    - 인라인 요소인 item 에도 적용 가능
+  - `flex` : `flex-grow` , `flex-shrink` , `flex-basis` 에 대한 단축 속성!
+    - `flex-grow`는 생략 불가
+    - `flex-basis`의 기본값은 auto이나, `flex` 속성에서 `flex-basis`를 생략할 경우, 0 값이 들어감

@@ -14,6 +14,8 @@
 
 # Bootstrap grid system
 
+- flexbox로 제작
 
-
--
+- **12개 column**
+  - 약수가 많아 다루기 쉬움
+- 6개 grid breakpoints
