@@ -74,3 +74,59 @@ def CalcSum( n ) :
   1) 해 선택 : 부분 최적해를 해 집합에 추가
   2) 실행가능성 검사 : 문제의 제약조건 위반 여부를 검사
   3) 해 검사 : 부분해 집합이 문제의 해가 되는지 검사
+
+
+
+# 2차원 배열
+
+- 행 우선 순회
+
+<img src="01_Some.assets/image-20220214104946716.png" alt="image-20220214104946716" style="zoom:70%;" />
+
+```python
+for i in range(n):
+    for j in range(m):
+        Array[i][j]
+```
+
+
+
+- 열 우선 순회
+
+<img src="01_Some.assets/image-20220214105025242.png" alt="image-20220214105025242" style="zoom:70%;" />
+
+```python
+for i in range(m):
+    for i in range(n):
+        Array[i][j]
+```
+
+
+
+- 지그재그 순회
+
+<img src="01_Some.assets/image-20220214105046028.png" alt="image-20220214105046028" style="zoom:70%;" />
+
+```python
+for i in range(n):
+    for j in range(m):
+        Array[i][j + (m-1-2*j) * (i%2)]
+```
+
+
+
+- 델타를 이용한 사방 탐색
+
+```python
+arr # NxN
+di[] = [0, 0, -1, 1] # 좌우상하
+dj[] = [-1, 1, 0, 0]
+for i in range(N-1):
+	for j in range(N-1):
+        for k in range(4):
+            ni = i + di[k]
+            nj = j + dj[k]
+            
+     
+```
+

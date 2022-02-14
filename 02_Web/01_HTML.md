@@ -8,12 +8,6 @@
 
 
 
-# Back-end
-
--  데이터와 로직을 담당
-
-
-
 # HTML
 
 - **H**yper **T**ext **M**arkup **L**anguage
@@ -38,23 +32,22 @@
 ```html
 <!DOCTYPE html>
 <html> 
-   
-    <head>
-        <meta charset="UTF-8"> <!--메타데이터(인코딩)-->
-        <title>Document</title> <!--문서 제목-->
-        <link rel="stylesheet" href="style.css"> <!--외부참조 스타일 적용-->
-        <script src="javascript.js"></script> <!--스크립트 요소-->
-        <!--내부참조 스타일 적용-->
-        <style>
-        p {
-            color: black;
-            }
-        </style>
-    </head>
+<head>
+    <meta charset="UTF-8"> <!--메타데이터(인코딩)-->
+    <title>Document</title> <!--문서 제목-->
+    <link rel="stylesheet" href="style.css"> <!--외부참조 스타일 적용-->
+    <script src="javascript.js"></script> <!--스크립트 요소-->
+    <!--내부참조 스타일 적용-->
+    <style>
+    p {
+        color: black;
+        }
+    </style>
+</head>
 
-    <body>
+<body>
 
-    </body>
+</body>
 </html>
 ```
 
@@ -85,7 +78,7 @@
   - 문서 내의 각 요소에 접근 / 수정이 용이하다
   - 각 내부 요소의 들여쓰기는 스페이스바 2개로 정의
 
-<img src="1_HTML.assets/image-20220207013311552.png" alt="image-20220207013311552" style="zoom:60%;" />
+<img src="01_HTML.assets/image-20220207013311552.png" alt="image-20220207013311552" style="zoom:60%;" />
 
 ### 요소
 

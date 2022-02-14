@@ -31,7 +31,7 @@
 
   - column-reverse : 순서가 반대. 아래부터 배치
 
-<img src="07_CSS_Flex.assets/image-20220207134604823.png" alt="image-20220207134604823" style="zoom:40%;" />
+<img src="08_CSS_Flex.assets/image-20220207134604823.png" alt="image-20220207134604823" style="zoom:40%;" />
 
 
 
@@ -41,7 +41,7 @@
   - nowrap : 기본값. 한 줄에 배치
   - wrap-reverse : 아래부터 wrap
 
-![image-20220207134641688](07_CSS_Flex.assets/image-20220207134641688.png)
+![image-20220207134641688](08_CSS_Flex.assets/image-20220207134641688.png)
 
 
 
@@ -53,7 +53,7 @@
   - space-around : item을 둘러싼 영역에 같은 공간 배치
   - space-evenly : 모든 여백에 같은 공간 배분
 
-![image-20220207135015354](07_CSS_Flex.assets/image-20220207135015354.png)
+![image-20220207135015354](08_CSS_Flex.assets/image-20220207135015354.png)
 
 
 
@@ -65,7 +65,7 @@
   - space-around : 줄 주변 공간을 동일하게 둠
   - space-evenly : 모든 여백에 같은 공간 배분
 
-![image-20220207135105935](07_CSS_Flex.assets/image-20220207135105935.png)
+![image-20220207135105935](08_CSS_Flex.assets/image-20220207135105935.png)
 
 
 
@@ -76,7 +76,7 @@
   - center : 가운데
   - baseline : 텍스트 baseline에 기준선을 맞춤
 
-![image-20220207135441288](07_CSS_Flex.assets/image-20220207135441288.png)
+![image-20220207135441288](08_CSS_Flex.assets/image-20220207135441288.png)
 
 
 
@@ -86,7 +86,7 @@
   - flex-end : 아래
   - center : 가운데
 
-![image-20220207135622628](07_CSS_Flex.assets/image-20220207135622628.png)
+![image-20220207135622628](08_CSS_Flex.assets/image-20220207135622628.png)
 
 
 
