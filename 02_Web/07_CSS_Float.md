@@ -27,6 +27,7 @@
 ```html
 <head>	    
     <style>
+        /* ::after - 선택한 요소의 맨 마지막 자식으로 가상 요소 생성 */
         .clearfix::after {
             content: "";
             display: blocd;
