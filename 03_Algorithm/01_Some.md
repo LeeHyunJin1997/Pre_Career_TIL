@@ -1,6 +1,6 @@
 # 알고리즘의 표현
 
-- 슈더코드
+- 의사코드 (슈더코드)
   - 코드가 돌아가는 문법과 비슷한 형태로 작성
   - 실제로 작동하지는 않지만 구현되기 전에 알고리즘의 형태를 보여줌
 
@@ -12,8 +12,6 @@ def CalcSum( n ) :
     return sum;
 ```
 
-
-
 - 순서도
   - 알고리즘을 도형의 요소로 표현
 
@@ -21,19 +19,26 @@ def CalcSum( n ) :
 
 # 알고리즘의 성능
 
-- 공간 복잡도
-- 시간 복잡도
-  - 실제 걸리는 시간을 측정
-  - 실행되는 명령문을 계산
-  - 공간에 대한 비용이 컸던 과거에 비해 시간복잡도가 더욱 중요해짐
-  - 빅-오 표기법
-    - O(n의 최고차항)
-    - 최악의 경우를 가정
+- 정확성
+- 작업량
+  - 시간 복잡도
+    - 실제 걸리는 시간을 측정
+    - 실행되는 명령문을 계산
+    - 공간에 대한 비용이 컸던 과거에 비해 시간복잡도가 더욱 중요해짐
+    - 빅-오 표기법
+      - O(n의 최고차항)
+      - 최악의 경우를 가정
+
+- 메모리 사용량
+  - 공간 복잡도
+
+- 단순성
+- 최적성
 
 
 
 
-# 리스트
+# 배열
 
 - 하나의 변수 선언으로 둘 이상의 값에 접근 가능
 
@@ -45,10 +50,43 @@ def CalcSum( n ) :
   - 인접한 두 개의 원소를 비교해 자리 교환
   - 한 단계가 끝나면 가장 큰 원소가 마지막 자리로 이동
   - 시간 복잡도 O(n^2)
+
+```python
+def BubbleSort(a, N): 
+    for i in range(N-1, 0, -1):
+        for j in range(0, i):
+            if a[j] >
+```
+
+
+
 - 카운팅 정렬 (Counting Sort)
   - 각 원소 숫자의 개수를 또 다른 리스트에 저장
   - 정수 자료에만 적용 가능 (일반적으로 자연수에 적용)
+  - 비교적 n이 작을 때에만 가능
   - 시간 복잡도 O(n+K)
+
+```python
+def Counting_Sort(A, B, k)
+# A [] -- 입력 배열 (1 to k)
+# B [] -- 정렬된 배열
+# C [] -- 카운트 배열
+
+	C = [0] * (k+1)
+    
+    for i in range (0, len(A)):
+        C[A[i]] += 1
+        
+    for i in range (1, len(C)):
+        C[i] += C[i-1]
+        
+    for i in range (len(B)-1, -1, -1):
+        C[A[i]] -= 1
+        B[C[A[i]]] = A[i]
+```
+
+
+
 - 선택 정렬 (Selection Sort)
 - 퀵 정렬 (Quick Sort)
 - 삽입 정렬 (Insert Sort)
@@ -81,8 +119,6 @@ def CalcSum( n ) :
 
 - 행 우선 순회
 
-<img src="01_Some.assets/image-20220214104946716.png" alt="image-20220214104946716" style="zoom:70%;" />
-
 ```python
 for i in range(n):
     for j in range(m):
@@ -93,8 +129,6 @@ for i in range(n):
 
 - 열 우선 순회
 
-<img src="01_Some.assets/image-20220214105025242.png" alt="image-20220214105025242" style="zoom:70%;" />
-
 ```python
 for i in range(m):
     for i in range(n):
@@ -104,8 +138,6 @@ for i in range(m):
 
 
 - 지그재그 순회
-
-<img src="01_Some.assets/image-20220214105046028.png" alt="image-20220214105046028" style="zoom:70%;" />
 
 ```python
 for i in range(n):
