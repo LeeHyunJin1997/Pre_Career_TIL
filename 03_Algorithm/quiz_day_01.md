@@ -1,9 +1,5 @@
 # 1. Gravity
 
-![gravity1](quiz_day_1.assets/gravity1.png)
-
-![gravity2](quiz_day_1.assets/gravity2.png)
-
 ```python
 T = int(input())
 
@@ -35,10 +31,6 @@ for tc in range(1, T+1):
 
 
 # 2. Baby gin 
-
-![baby-gin1](quiz_day_1.assets/baby-gin1.png)
-
-![baby-gin2](quiz_day_1.assets/baby-gin2.png)
 
 ```python
 import sys
@@ -87,9 +79,7 @@ for tc in range(T):
 
 # 3. SWEA - 1206
 
-![image-20220210105252864](quiz_day_1.assets/image-20220210105252864.png)
-
-![image-20220210105318346](quiz_day_1.assets/image-20220210105318346.png)
+https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV134DPqAA8CFAYh
 
 ```python
 import sys
