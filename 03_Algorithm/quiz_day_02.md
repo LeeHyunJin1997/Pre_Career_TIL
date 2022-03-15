@@ -1,6 +1,6 @@
-# 1. Min-Max
+https://swexpertacademy.com/main/learn/course/subjectDetail.do?courseId=AVuPDN86AAXw5UW6&subjectId=AWOVFCzaqeUDFAWg#
 
-![image-20220210165446279](quiz_day_2.assets/image-20220210165446279.png)
+# 1. Min-Max
 
 ```python
 T = int(input())
@@ -28,8 +28,6 @@ for tc in range(1, T+1):
 
 
 # 2. Electric Bus
-
-![image-20220210165359828](quiz_day_2.assets/image-20220210165359828.png)
 
 ```python
 T = int(input())
@@ -81,8 +79,6 @@ for tc in range(1, T+1):
 
 # 3. Cards
 
-![image-20220210165304263](quiz_day_2.assets/image-20220210165304263.png)
-
 ```python
 T = int(input())
 
@@ -114,8 +110,6 @@ for tc in range(1, T+1):
 
 
 # 4. Sum of Intervals
-
-![image-20220210165705234](quiz_day_2.assets/image-20220210165705234.png)
 
 ```python
 T = int(input())
@@ -150,10 +144,6 @@ for tc in range(1, T+1):
 
 
 # 5. SWEA - 1208 Flatten
-
-![image-20220210165029332](quiz_day_2.assets/image-20220210165029332.png)
-
-![image-20220210164958934](quiz_day_2.assets/image-20220210164958934.png)
 
 ```python
 import sys
