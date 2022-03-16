@@ -33,7 +33,6 @@ for r in range(len(num_list)):
                 total += sub
 
 print(total)
-
 ```
 
 
@@ -70,16 +69,13 @@ for tc in range(1, T+1):
                 is_zero = 1
 
     print(f'#{tc} {is_zero}')
-
 ```
 
 
 
 # SWEA 1954
 
-![image-20220214193935017](quiz_day_3.assets/image-20220214193935017.png)
-
-![image-20220214193955299](quiz_day_3.assets/image-20220214193955299.png)
+https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PobmqAPoDFAUq
 
 ```python
 T = int(input())
@@ -132,7 +128,7 @@ for tc in range(1, T+1):
 
 # SWEA 1209
 
-![image-20220214194057765](quiz_day_3.assets/image-20220214194057765.png)
+https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV13_BWKACUCFAYh
 
 ```python
 import sys
