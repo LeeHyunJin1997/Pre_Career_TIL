@@ -46,6 +46,27 @@
   - stack : 현재 경로를 담음. 더이상 진행할 수 없으면 하나씩 pop하며 진행할 수 있는 갈림길을 찾음
   - visited : 방문했던 지점들을 담음. 갈림길을 판단할 때 참고
 
+```python
+visited = []
+stack = []
+DFS(v)
+	v 방문;
+    visited[v] <- true;
+    do {
+        if (v의 인접 정점 중 방문 안한 w 찾기)
+        	push(v);
+        	while( w ){
+                w 방문;
+                visited[w] <- true;
+                push(w);
+                v<-w;
+                v의 인접 정점 중 방문 안한 w 찾기
+            }
+        	v<-pop(stack);
+    } while(v)
+end DFS()
+```
+
 
 
 # 백트래킹
