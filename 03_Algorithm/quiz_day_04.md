@@ -1,6 +1,6 @@
 # 1. SWEA_4836
 
-![image-20220215133006335](quiz_day_4.assets/image-20220215133006335.png)
+https://swexpertacademy.com/main/learn/course/subjectDetail.do?courseId=AVuPDN86AAXw5UW6&subjectId=AWOVF-WqqecDFAWg#
 
 ```python
 T = int(input())
@@ -39,7 +39,7 @@ for tc in range(1, 1+T):
 
 # 2. SWEA_4837
 
-![image-20220215133043163](quiz_day_4.assets/image-20220215133043163.png)
+https://swexpertacademy.com/main/learn/course/subjectDetail.do?courseId=AVuPDN86AAXw5UW6&subjectId=AWOVF-WqqecDFAWg#
 
 ```python
 def mySum(lst):
@@ -79,7 +79,7 @@ for tc in range(1, T+1):
 
 # 3. SWEA_4839
 
-![image-20220215133122004](quiz_day_4.assets/image-20220215133122004.png)
+https://swexpertacademy.com/main/learn/course/subjectDetail.do?courseId=AVuPDN86AAXw5UW6&subjectId=AWOVF-WqqecDFAWg#
 
 ```python
 # 절반 부분을 구하는 함수
@@ -127,7 +127,7 @@ for tc in range(1, T+1):
 
 # 4. SWEA_4843
 
-![image-20220215133200601](quiz_day_4.assets/image-20220215133200601.png)
+https://swexpertacademy.com/main/learn/course/subjectDetail.do?courseId=AVuPDN86AAXw5UW6&subjectId=AWOVF-WqqecDFAWg#
 
 ```python
 T = int(input())
@@ -154,9 +154,7 @@ for tc in range(1, T+1):
 
 # 5. SWEA_1210
 
-![image-20220215132855623](quiz_day_4.assets/image-20220215132855623.png)
-
-![image-20220215132911721](quiz_day_4.assets/image-20220215132911721.png)
+https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14ABYKADACFAYh
 
 ```python
 # 전체 리스트와 뒤에서부터 x번 째 단계, 위치 인덱스 y를 인자로 받는 함수
