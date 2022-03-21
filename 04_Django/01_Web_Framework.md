@@ -29,9 +29,9 @@
 # MVC Design Pattern
 
 - model - view - controller
-- 소프트웨어 공락에서 사용되는 디자인 패턴
+- 소프트웨어 공학에서 사용되는 디자인 패턴
 - UI와 프로그램 로직을 분리하여 시각적인 요소의 이면의 부분을 영향 없이 고칠 수 있음
-- 같은 모델이지만 Django는 MTV Pattern이라 부름
+- 같은 모델을 Django에서는 MTV Pattern이라 부름
 
 
 
@@ -47,25 +47,4 @@
   - Model을 통해 필요한 데이터 접근
   - Template에게 응답의 서식 설정을 맡김
 
- 
 
-# Project
-
-- Application의 집합
-
-
-
-# Application
-
-- 앱은 실체 요청을 처리하고 페이즈를 보여주는 역할
-- 일반적으로 앱은 하나의 기능 혹은 역할 단위
-
-
-
-# Django Template Language (DTL)
-
-- 조건, 반복, 변수 치환 필터 기능을 제공
-- 프로그래밍적 로직이 아니라 프레젠테이션을 표현하기 위한 것
-- Python의 일부 구조를 차용하지만, Python으로 동작하지는 않음
-- `{{ variable }}`: 변수 선언
-- .
