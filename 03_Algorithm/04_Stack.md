@@ -99,12 +99,97 @@ def f(i, N):
 		f(i+1, N)
     return
 
+
 a = [1,2,3]
 bit = [0,0,0]
 
 f(0, 3)
 ```
 
+- 부분집합의 합
+
+```python
+# i 인덱스, N 원소 개수, s 현재까지 선택된 원소 합, t 목표합
+def f(i, N, s, t):
+    # 부분집합의 합이 목표값일때
+    if s == t:
+        # 비트(선택)에 해당하는 a의 원소 출력
+        for j in range(N):
+            if bit[j]:
+                print(a[j], end = ' ')
+    # 더이상 고려할 원소가 없을 때
+    elif i==N:
+        return
+    # 목표값을 지나쳤을 때
+    elif s > t:
+        return
+   	else:
+        # i번째 원소를 포함하고 진행
+        bit[i] = 1
+        f(i+1, N, s+a[i], t)
+        # i번째 원소를 포함하지 않고 진행
+        bit[i] = 0
+		f(i+1, N, s, t)
+    return
 
 
-순열.. 분할정복..
+N = 10
+a = [x for x in range(1, N+1)]
+bit = [0] * N
+# 합이 10인 부분집합을 찾기
+t = 10
+
+f(0, N, 0, t)
+```
+
+
+
+# 순열
+
+```python
+def f(i, N):
+    # 끝까지 완성했을 경우 출력
+    if i == N:
+        print(p)
+    else:
+        for j in range(i, N):
+            # 순서를 바꿔 진행
+            p[i], p[j] = p[j], p[i]
+            f(i+1, N)
+            # 원래대로 복귀
+            p[i], p[j] = p[j], p[i]
+    
+    
+# 길이가 5인 순열
+N = 5
+p = [x for x in range(1, N+1)]
+f(0, N)
+```
+
+
+
+# 분할 정복 알고리즘
+
+- 분할 - 정복 - 통합
+  - 문제를 작은 부분들로 나눠 각각 해결한 후, 해답을 모으는 방식
+
+- 거듭제곱
+  - C*C.. 와 같은 단순 거듭제곱은 계산량이 많음
+  - C^8 = ((C^2)^2)^2 과 같은 개념으로 분할해 계산량을 줄일 수 있음
+
+```python
+# C 밑 n 지수
+def Power(C, n):
+    if n == 0 or C == 0:
+        return 1
+    # n이 짝수일 때
+    if n % 2 == 0:
+        new_C = Power(C, n/2)
+        return new_C * new_C
+    # n이 홀수일 때
+    else:
+        new_C = Power(C, (n-1)/2)
+        return (new_C * new_C) * C
+```
+
+- 퀵 정렬
