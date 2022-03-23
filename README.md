@@ -1,1 +1,1 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=gradient&height=240&section=header&text=Today%20I%20Learned&fontAlignY=40&fontSize=90&desc=Just%20take%20the%20first%20step&descAlign=70)
+![header](https://capsule-render.vercel.app/api?type=waving&color=gradient&height=240&section=header&text=Today%20I%20Learned&fontAlignY=40&fontSize=80&desc=Just%20take%20the%20first%20step&descAlign=70)

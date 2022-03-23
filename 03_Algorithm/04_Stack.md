@@ -193,3 +193,52 @@ def Power(C, n):
 ```
 
 - 퀵 정렬
+  - 기준(pivot item)을 중심으로, 더 작은 것은 왼쪽, 큰 것은 오른쪽에 위치시킨다.
+  - 최악의 시간 복잡도는 O(n^2)으로, 합병정렬보다 느리지만
+  - 평균 복잡도는 nlogn 이기 때문에 퀵정렬이라 부른다.
+
+```python
+def quickSort(a, begin, end) :
+    # begin이 end보다 작을 때(정렬할 것이 남아있을 때)
+    if begin < end :
+        p = partition(a, begin, end)
+        # p를 기준으로 좌측에서 반복
+        quickSort(a, begin, p-1)
+        # p를 기준으로 우측에서 반복
+        quickSort(a, p+1, end)
+
+# partition이 한번 호출되면 
+# a는 pivot을 기준으로 
+# 좌측에는 더 작은 값이, 우측에는 더 큰 값이
+# 정렬되지 않은 상태로 섞여있음 
+def partition (a, begin, end) :
+    # 기준이 되는 pivot (인덱스)
+    pivot = (begin + end) // 2
+    L = begin
+    R = end
+    # L과 R이 만나지 않을 때까지 반복
+    while L < R :
+        # L은 pivot 위치의 값보다 큰 값을 찾으며 우측으로 이동
+        while(L<R and a[L]< a[pivot]) :
+            L += 1
+       	# R은 pivot 위치의 값보다 작은 값을 찾으며 좌측으로 이동
+        while(L<R and a[R]>=a[pivot]) :
+            R -= 1
+        # L과 R이 서로 만나지 않고 정지했을 때
+        if L < R :
+            # L이 pivot까지 왔으면 (pivot 좌측에는 큰 값이 더이상 없다면)
+            if L==pivot :
+                # pivot을 R 위치로 변경
+                pivot = R
+            # R, L 값 바꿔
+            a[L], a[R] = a[R], a[L]
+    # while 문 종료 시점, L과 R 값은 동일
+    # pivot과 R 값 바꿔
+    a[pivot], a[R] = a[R], a[pivot] 
+    return R
+
+a = [69, 10, 30, 2, 16, 8, 31, 22]
+quickSort(a, 0, 7)
+print(a)
+```
+
