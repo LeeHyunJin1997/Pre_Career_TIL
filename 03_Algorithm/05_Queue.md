@@ -121,7 +121,54 @@ print(deQueue())
 
 
 
-# DEQ
+# BFS (Breadth First Search)
 
-- Queue의 양 끝에서 데이터의 삽입과 삭제 발생
-- heap 사용
+- 너비 우선 탐색
+- 먼저 인접한 정점을 모두 탐색, 탐색한 정점들에 인접한 정점을 차례로 방문
+- 큐를 활용
+
+```python
+# G 그래프, v 시작 정점, n 정점 개수
+def BFS(G, v, n):
+    visited = [0] * (n+1)
+    queue = []
+    queue.append(v) 			# 시작점 v 삽입
+    visited[v] = 1
+    while queue:				# 큐가 빌 때까지
+        t = queue.pop()
+        visited[t] = 1
+        for i in G[t]:			# t와 연결된 모든 정점에 대해
+            if not visited[i]: 	# 방문하지 않은 곳이라면
+                queue.append(i) # 큐에 넣기
+```
+
+
+
+# 데크 (deque)
+
+- 일반적인 리스트는 `list.pop(0)`을 할 경우 항목의 재배치가 요구되어 O(n)의 연산이 소요
+- 반면 데크는 양끝 항목의 삽입 또는 제거가 압도적으로 빠르다
+
+```python
+from collections import deque
+
+deq = deque()
+```
+
+- 데크의 메서드
+
+  - `deque.append(item)`: item을 데크의 오른쪽 끝에 삽입
+
+  - `deque.appendleft(item)`: item을 데크의 왼쪽 끝에 삽입
+
+  - `deque.pop()`: 데크의 오른쪽 끝 항목을 가져오는 동시에 데크에서 삭제
+
+  - `deque.popleft()`: 데크의 왼쪽 끝 항목을 가져오는 동시에 데크에서 삭제
+
+  - `deque.extend(array)`: array를 순환하면서 데크의 오른쪽에 추가
+
+  - `deque.extendleft(array)`: array를 순환하면서 데크의 왼쪽에 추가
+
+  - `deque.remove(item)`: item을 데크에서 찾아 삭제
+
+  - `deque.rotate(num)`: 데크를 num만큼 회전 (양수면 오른쪽, 음수면 왼쪽).
