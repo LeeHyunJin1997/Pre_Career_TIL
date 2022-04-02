@@ -76,7 +76,7 @@ for tc in range(1, T+1):
 
 # 3. SWEA-1213
 
-![image-20220216220721572](quiz_day_5.assets/image-20220216220721572.png)
+https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14P0c6AAUCFAYi
 
 ```python
 # 테스트 케이스 10개
@@ -101,7 +101,7 @@ for _ in range(10):
 
 # 4. SWEA-1221
 
-![image-20220216220848178](quiz_day_5.assets/image-20220216220848178.png)
+https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14jJh6ACYCFAYD
 
 ```python
 # bubble sort : 매우 오래 걸림
