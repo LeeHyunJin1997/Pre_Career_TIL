@@ -1,8 +1,6 @@
 # 1. SWEA-4864
 
-![image-20220217154417423](quiz_day_6.assets/image-20220217154417423.png)
-
-![image-20220217154437832](quiz_day_6.assets/image-20220217154437832.png)
+https://swexpertacademy.com/main/learn/course/subjectDetail.do?courseId=AVuPDN86AAXw5UW6&subjectId=AWOVGOEKqeoDFAWg
 
 ```python
 T = int(input())
@@ -27,9 +25,7 @@ for tc in range(1, T+1):
 
 # 2. SWEA-4861
 
-![image-20220217154507897](quiz_day_6.assets/image-20220217154507897.png)
-
-![image-20220217154525898](quiz_day_6.assets/image-20220217154525898.png)
+https://swexpertacademy.com/main/learn/course/subjectDetail.do?courseId=AVuPDN86AAXw5UW6&subjectId=AWOVGOEKqeoDFAWg
 
 ```python
 import sys
@@ -76,7 +72,7 @@ for tc in range(1, T+1):
 
 # 3. SWEA-4865
 
-![image-20220217154550313](quiz_day_6.assets/image-20220217154550313.png)
+https://swexpertacademy.com/main/learn/course/subjectDetail.do?courseId=AVuPDN86AAXw5UW6&subjectId=AWOVGOEKqeoDFAWg
 
 ```python
 T = int(input())
@@ -105,9 +101,7 @@ for tc in range(1, T+1):
 
 # 4. SWEA-3143
 
-![image-20220217154619938](quiz_day_6.assets/image-20220217154619938.png)
-
-![image-20220217154632366](quiz_day_6.assets/image-20220217154632366.png)
+https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV_65wkqsb4DFAWS
 
 ```python
 T = int(input())
@@ -136,9 +130,7 @@ for tc in range(1, T+1):
 
 # 5. SWEA-1216
 
-![image-20220217154735054](quiz_day_6.assets/image-20220217154735054.png)
-
-![image-20220217154749251](quiz_day_6.assets/image-20220217154749251.png)
+https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14Rq5aABUCFAYi
 
 - 로직
 
@@ -147,8 +139,6 @@ for tc in range(1, T+1):
   - 확장을 거듭하다 회문이 아니게 되면 break
 
   - 홀수인 경우와 짝수인 경우 나눠 풀이
-
-![image-20220217153705642](quiz_day_6.assets/image-20220217153705642.png)
 
 ```python
 import sys
