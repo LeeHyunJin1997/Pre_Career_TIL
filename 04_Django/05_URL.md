@@ -62,6 +62,8 @@ urlpatterns = [
 from django.urls import path
 from . import views
 
+# 여러 app이 존재할 때, app_name을 이용해 각 URL을 구분할 수 있음
+app_name = 'articles'
 urlpatterns = [
     path('index/', views.index),
     path('greeting/', views.greeting),
@@ -95,3 +97,40 @@ urlpatterns = [
 	<a href="{% url 'greeting' %}">greeting</a>
 {% endblock %}
 ```
+
+- Namespace를 구분하기 위해 app_name을 사용한 경우
+
+```python
+# articles/urls.py
+
+app_name = 'articles'
+urlpatterns = [
+    path('index/', views.index, name='index'),
+    path('greeting/', views.greeting, name='greeting'),
+    ...,
+]
+```
+
+```python
+# articles/views.py
+# 이름 공간 뿐만 아니라, 실제 폴더 공간도 구분하기 위해
+# 템플릿의 위치를 articles/templates/articles/로 이동
+
+def index(request):
+    return render(request, 'articles/index.html')
+
+def greeting(request):
+    return render(request, 'articles/greeting.html')
+```
+
+```python
+<!-- index.html -->
+
+{% extends %}
+
+{% block content %}
+	<h1>만나서 반가워요</h1>
+	<a href="{% url 'articles:greeting' %}">greeting</a>
+{% endblock %}
+```
+
