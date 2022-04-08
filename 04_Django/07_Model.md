@@ -82,5 +82,34 @@ $ python manage.py sqlmigrate app_name 0001
 
 # migation의 적용여부를 확인
 $ python manage.py showmigrations
+
+# vscode의 SQLite 확장프로그램 이용해 DB 시각적으로 확인 가능
 ```
 
+
+
+# DB API
+
+- DB를 조작하기 위한 도구
+- shell_plus를 이용해 접근
+  1. 라이브러리 설치 : `pip install ipython`, `pip install django-extensions`
+  2. `INSTALLED_APPS`에 `'django_extensions'` 등록
+  3. `python manage.py shell_plus`
+
+```shell
+# ClassName.Manager.QuerySet_API
+Article.objects.all()
+```
+
+- Manager
+  - model에 query 작업이 제공되는 인터페이스
+  - 기본적으로 모든 django 모델 클래스에 objects하는 manager 존재
+- QuerySet
+  - 데이터베이스로부터 전달받은 객체 목록
+  - 조회, 필터, 정렬 등을 수행할 수 있음
+
+
+
+# CRUD
+
+- Create, Read, Update, Delete
