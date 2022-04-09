@@ -1,6 +1,6 @@
 # SWEA-5432
 
-![image-20220218175444610](quiz_day_7.assets/image-20220218175444610.png)
+https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWVl47b6DGMDFAXm
 
 - 최초 이중 for 문으로 풀었을 때는 시간제한을 빠져나올 수 없었던 문제
 - cnt 를 이용한 논리로 해결
@@ -40,7 +40,7 @@ for tc in range(1, T+1):
 
 # SWEA-1859
 
-![image-20220218175548551](quiz_day_7.assets/image-20220218175548551.png)
+https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5LrsUaDxcDFAXc
 
 ```python
 # 백만장자 프로젝트
@@ -84,9 +84,7 @@ for tc in range(1, T+1):
 
 # SWEA-1979
 
-![image-20220218175854409](quiz_day_7.assets/image-20220218175854409.png)
-
-![image-20220218175909646](quiz_day_7.assets/image-20220218175909646.png)
+https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PuPq6AaQDFAUq
 
 ```python
 T = int(input())
@@ -133,7 +131,7 @@ for tc in range(1, T+1):
 
 # SWEA-1945
 
-![image-20220218180627703](quiz_day_7.assets/image-20220218180627703.png)
+https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5Pl0Q6ANQDFAUq
 
 ```python
 # 간단한 소인수분해
@@ -160,7 +158,7 @@ for tc in range(1, T+1):
 
 # SWEA-4408
 
-![image-20220218180725271](quiz_day_7.assets/image-20220218180725271.png)
+https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWNcJ2sapZMDFAV8
 
 ```python
 # 자기방으로 돌아가기
@@ -205,9 +203,7 @@ for tc in range(1, T+1):
 
 # SWEA - 1974
 
-![image-20220218180922328](quiz_day_7.assets/image-20220218180922328.png)
-
-![image-20220218180933446](quiz_day_7.assets/image-20220218180933446.png)
+https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5Psz16AYEDFAUq
 
 ```python
 # 스도쿠 검증
