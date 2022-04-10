@@ -70,7 +70,7 @@ subset(0, N, target)
 
 
 # SWEA-1223
-
+https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14nnAaAFACFAYD
 ```python
 for tc in range(1, 11):
     T = int(input())

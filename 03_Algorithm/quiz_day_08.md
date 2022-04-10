@@ -49,9 +49,6 @@ print(check(n))
 
 # 3.
 
-![image-20220222112313839](quiz_day_8.assets/image-20220222112313839.png)
-
-![image-20220222112333979](quiz_day_8.assets/image-20220222112333979.png)
 
 ```python
 # pascal 함수는 선언된 리스트에 다음 줄을 이어붙임
