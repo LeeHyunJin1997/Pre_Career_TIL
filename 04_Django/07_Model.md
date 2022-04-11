@@ -62,6 +62,10 @@ class Article(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     # auto_now : 레코드의 최종 수정 일자
     updated_at = models.DateTimeField(auto_now=True)
+    
+    # 각 레코드를 print하면 title 속성을 반환
+    def __str__(self):
+        return self.title
 ```
 
 
@@ -112,4 +116,189 @@ Article.objects.all()
 
 # CRUD
 
-- Create, Read, Update, Delete
+- Create
+
+```shell
+# 방법 1
+article = Article()
+article.title = 'first'
+article.content = 'django!'
+article.save()
+
+# 방법 2
+article = Article(title='second', content='django!!')
+article.save()
+
+# 방법 3
+Article.objects.create(title='third', content='django!')
+```
+
+- Read
+
+```shell
+# QuerySet에 포함된 전체 레코드 확인
+Article.objects.all()
+
+# 특정 속성값을 갖는 객체를 반환
+Article.objects.get(pk=100)
+Article.objects.get(content='django!')
+
+# 특정 조건을 만족하는 객체의 새 QuerySet을 반환
+Article.objects.filter(content='django!')
+Article.objects.filter(title='first!')
+```
+
+- Update
+
+```shell
+article = Article.objects.get(pk=1)
+# 현재 article.title은 'first'
+article.title = 'byebye'
+article.save()
+```
+
+- Delete
+
+```shell
+article = Article.objects.get(pk=1)
+article.delete()
+```
+
+
+
+# Admin Site
+
+- 서버의 관리자 페이지
+- 모델을 admin.py에 등록하고 관리
+- django.contrib.auth 모듈에서 제공
+
+```bash
+# 관리자 계정 생성
+$ python manage.py createsuperuser
+# 뒤이어 생성할 관리자 아이디, 비밀번호(보이지 않음) 입력
+```
+
+```python
+# articles/admin.py
+
+from django.contrib import admin
+from .models import Article
+
+# 등록할 모델 속성 지정
+class ArticleAdmin(admin.ModelAdmin):
+    # 모델이 보여줄 속성 지정
+    list_display = ('pk', 'title', 'content', 'create_at', 'update_at',)
+    
+# 모델 등록
+admin.site.register(Article, ArticleAdmin)
+```
+
+
+
+# Form 전송방식
+
+- GET
+  - URL에 Form의 내용이 그대로 노출
+  - 보안에 취약하여 데이터를 가져올 때만 사용
+  - CRUD 중 R에만 사용
+- POST
+  - 데이터를 변경할 때 사용
+  - csrf token을 사용, 사용자 데이터에 난수를 부여하는 방식으로 보안 강화
+    - Cross-Site Request Forgery : URL을 조작해 웹페이지의 수정, 삭제에 접근하는 공격
+    - `setting.py` 의 `MIDDLEWARE`에서 csrf 관련 보안 설정
+
+
+
+# 웹 상에서 CRUD
+
+-  Read (index)
+
+```python
+# articles/views.py
+
+from .models import Article
+
+def index(request):
+    articles = Article.objects.all()
+    # 순서가 반대인 목록 가져오기
+    # articles = Article.objects.order_by('-pk')
+    # 가져와서 순서 바꾸기
+    # articles = Article.objects.all()[::-1]
+    
+    context = {
+        'articles': articles,
+    }
+    return render(request, 'articles/index.html', context)
+```
+
+```django
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Articles</h1>
+  <a href="{% url 'articles:new' %}">NEW</a>
+  <hr>
+  {% for article in articles %}
+    <p>글 번호: {{ article.pk }}</p>
+    <p>글 제목: {{ article.title }}</p>
+    <p>글 내용: {{ article.content }}</p>
+    <a href="{% url 'articles:detail' article.pk %}">DETAIL</a>
+    <hr>
+  {% endfor %}
+{% endblock content %}
+```
+
+- Create (new & create)
+
+  - New - 새로운 article의 내용을 작성할 페이지
+
+  ```python
+  # articles/views.py
+  
+  def new(request):
+      return render(request, 'articles/new.html')
+  ```
+
+  ``` django
+  <!-- articles/templates/articles/new.html -->
+  
+  {% extends 'base.html' %}
+  
+  {% block content %}
+  	<h1>NEW</h1>
+  	<!-- form을 작성해 create으로 전송 -->
+  	<form action="{% url 'articles:create'%}" method="POST">
+          <!-- POST방식은 반드시 csrf 토큰을 포함 -->
+          {% csrf_token %}
+      	<label for="title">Title: </label>
+          <input type="text" name="title"><br>
+          <label for="content">Content: </label>
+          <textarea name="content" cols="30" rows="5"></textarea><br>
+          <input type="submit">
+  	</form>
+  	<hr>
+  	<a href="{% url 'articles:index' %}"[back]</a>
+  {% endblock %}
+  ```
+
+  - Create - 작성된 내용을 전달받아 모델에 입력
+    - 페이지로 이동하는 것이 아니라, 입력만 하고 redirect
+
+  ```python
+  # articles/views.py
+  
+  from django.shortcuts import render, redirect
+  
+  def create(request):
+      # 전송된 form에서 속성을 골라냄
+      title = request.POST.get('title')
+      content = request.POST.get('content')
+      
+      article = Article(title=title, content=content)
+      article.save()
+      # 저장 후에는 index 페이지로 이동
+      return redirect('articles:index')
+  ```
+
+- Detail (개별 글을 선택, 이동하기 위한 페이지)
+

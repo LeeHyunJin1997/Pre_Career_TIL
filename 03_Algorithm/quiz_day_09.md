@@ -1,9 +1,5 @@
 # 1. SWEA-4873
 
-![image-20220222142047013](quiz_day_9.assets/image-20220222142047013.png)
-
-![image-20220222142102275](quiz_day_9.assets/image-20220222142102275.png)
-
 ```python
 def erase(S):
     # 첫 문자를 비교할 때 에러를 방지하기 위해 항목을 하나 채움
@@ -30,8 +26,6 @@ for tc in range(1, T+1):
 
 
 # 2. SWEA-4866
-
-![image-20220222142209236](quiz_day_9.assets/image-20220222142209236.png)
 
 ```python
 def check(S):
@@ -72,10 +66,6 @@ for tc in range(1, T+1):
 
 
 # 3. SWEA-4869
-
-![image-20220222142133019](quiz_day_9.assets/image-20220222142133019.png)
-
-![image-20220222142142222](quiz_day_9.assets/image-20220222142142222.png)
 
 ```python
 def cases():
