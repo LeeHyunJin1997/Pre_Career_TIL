@@ -302,3 +302,154 @@ def index(request):
 
 - Detail (개별 글을 선택, 이동하기 위한 페이지)
 
+```python
+# articles/urls.py
+
+path('<int:pk>/', views.detail, name='detail'),
+```
+
+```python
+# articles/views.py
+
+def detail(request, pk):
+    article = Article.objects.get(pk=pk)
+    context = {
+        'article': article
+    }
+    return render(request, 'articles/detail.html', context)
+```
+
+```django
+<!-- articles/templates/articles/detail.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>DETAIL</h1><hr>
+    <p>제목: {{ article.title }}</p>
+    <p>내용: {{ article.content }}</p>
+    <p>작성시각: {{ article.created_at }}</p>
+    <p>수정시각: {{ article.updated_at }}</p>
+    <hr>
+    <a href="{% url 'articles:index' %}">BACK</a>
+{% endblock content %}
+```
+
+- Delete
+
+```python
+# articles/urls.py
+
+path('<int:pk>/delete', views.delete, name='delete'),
+```
+
+```python
+# articles/views.py
+
+def delete(request, pk):
+    article = Article.objects.get(pk=pk)
+    # POST방식일 경우에만 삭제하도록 지정해 URL로 직접 삭제에 접근하려는 것을 막음
+    if request.method == 'POST':
+    	article.delete()
+        return redirect('articles:index')
+    # GET방식일 때는 detail로 돌아가기
+    else:
+    	return redirect('articles:detail', article.pk)
+```
+
+```django
+<!-- articles/templates/articles/detail.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+	<!-- delete로 이동함과 동시에 article.pk 전달 -->
+	<form action="{% url 'articles:delete' article.pk %}" method="POST">
+        {% csrf_token %}
+        <button>DELETE</button>
+	</form>
+	<a href="{% url 'articles:index' %}">BACK</a>
+{% endblock %}
+```
+
+- Update (edit & update)
+
+  - Edit - 수정사항을 입력받을 페이지
+
+  ```python
+  # articles/urls.py
+  
+  path('<int:pk>/edit/', views.edit, name='edit')
+  ```
+
+  ```python
+  # articles/views.py
+  
+  def edit(request, pk):
+      article = Article.objects.get(pk=pk)
+      context = {
+          'article': article,
+      }
+      return render(request, 'articles/edit.html', context)
+  ```
+
+  ```django
+  <!-- articles/templates/articles/edit.html -->
+  
+  {% extends 'base.html' %}
+  
+  {% block content %}
+  	<h1>EDIT</h1>
+  	<form action="{% url 'articles:update'%}" method="POST">
+          {% csrf_token %}
+      	<label for="title">Title: </label>
+          <!-- value값을 지정해주어 변경 전 상태를 표시 -->
+          <input type="text" name="title" value="{{ article.title }}"><br>
+          <label for="content">Content: </label>
+          <textarea name="content" cols="30" rows="5">{{ article.content}}</textarea>
+          <br>
+          <input type="submit">
+  	</form>
+  	<hr>
+  	<a href="{% url 'articles:index' %}"[back]</a>
+  {% endblock %}
+  ```
+
+  - Update - 수정사항을 저장하고 detail로 이동
+
+  ```python
+  # articles/urls.py
+  
+  path('<int:pk>/update', views.update, name='update'),
+  ```
+
+  ```python
+  # articles/views.py
+  
+  def update(request, pk):
+      article = Article.objects.get(pk=pk)
+      article.title = request.POST.get('title')
+      article.content = request.POST.get('content')
+      article.save()
+      return redirect('articles:detail', article.pk)
+  ```
+
+  ```django
+  <!-- articles/templates/articles/edit.html -->
+  
+  {% extends 'base.html' %}
+  
+  {% block content %}
+  	<h1>EDIT</h1>
+  	<form action="{% url 'articles:update' article.pk %}" method="POST">
+          {% csrf_token %}
+          ...
+  	</form>
+  	<a href="{% url 'articles:index' %}">BACK</a>
+  {% endblock %}
+  ```
+
+  
+
+
+
