@@ -1,13 +1,19 @@
+# Branch
+
+> 나뭇가지처럼 여러 갈래로 작업 공간을 나누어주는 Git의 도구
+>
+> 원래 코드에 영향을 주지 않고 작업할 수 있다.
+
+
+
+
+
 - `git branch` : 브랜치 목록 확인
-
 - `git branch branch_name` : branch_name이라는 새로운 브랜치 생성
-
 - `git branch -d branch_name` : branch_name에 해당하는 브랜치 삭제
   - 병합된 브랜치만 삭제
 - `git branch -D branch_name` : 강제 삭제
-
 - `git switch branch_name` : 다른 브랜치로 이동
-
 - `git switch -c branch_name` : 브랜치를 생성과 동시에 이동
 
 
