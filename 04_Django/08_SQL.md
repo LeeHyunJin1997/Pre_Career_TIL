@@ -6,6 +6,8 @@
 
 
 
+
+
 #### 장점
 
 - 데이터 중복 최소화
@@ -17,13 +19,19 @@
 
 
 
+
+
 ---
+
+
 
 
 
 # RDB
 
 > key와 value가 연결된 관계를 표로 정리한 데이터베이스
+
+
 
 
 
@@ -39,7 +47,11 @@
 
 
 
+
+
 ---
+
+
 
 
 
@@ -48,6 +60,8 @@
 > **S**tructured **Q**uery **L**anguage
 >
 > RDBMS의 데이터 관리를 위한 언어
+
+
 
 
 
@@ -67,6 +81,8 @@
   - REVOKE
   - COMMIT
   - ROLLBACK
+
+
 
 
 
@@ -103,6 +119,8 @@ SELECT * FROM examples;
 -- 행과 열의 형태로 출력하기
 .mode column
 ```
+
+
 
 
 
@@ -156,6 +174,8 @@ INSERT INTO classmates VALUES
 
 
 
+
+
 ### 조회
 
 ```sql
@@ -178,6 +198,8 @@ SELECT DISTINCT age FROM classmates;
 
 
 
+
+
 ### 삭제
 
 > 중복되지 않는 값인 primary key나 rowid를 이용해 삭제하자
@@ -195,6 +217,8 @@ id INTEGER PRIMARY KEY AUTOINCREMENT,
 
 
 
+
+
 ### 수정
 
 > 마찬가지로, 중복되지 않는 값인 primary key나 rowid를 이용해 삭제하자
@@ -202,6 +226,8 @@ id INTEGER PRIMARY KEY AUTOINCREMENT,
 ```sql
 UPDATE classmates SET name='홍길동', address='제주도' WHERE rowid=5;
 ```
+
+
 
 
 
@@ -259,6 +285,8 @@ SELECT SUM(balance) FROM users WHERE age>=30;
 
 
 
+
+
 ### LIKE operator
 
 > 패턴을 기반으로 데이터를 조회
@@ -281,6 +309,8 @@ SELECT * FROM users WHERE first_name LIKE '%준';
 
 
 
+
+
 ### ORDER BY
 
 > 조회 결과 집합을 정렬
@@ -298,6 +328,8 @@ SELECT * FROM users ORDER BY age, last_name ASC LIMIT 10;
 
 
 
+
+
 ### GROUP BY
 
 > 데이터를 특정 기준으로 종합
@@ -308,6 +340,8 @@ SELECT * FROM users ORDER BY age, last_name ASC LIMIT 10;
 -- 성씨마다 몇명씩 있는지 조회
 SELECT lasr_name, COUNT(*) FROM users GROUP BY last_name;
 ```
+
+
 
 
 
