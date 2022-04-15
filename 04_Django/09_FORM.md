@@ -96,15 +96,11 @@ class ArticleForm(forms.Form):
     region = forms.ChoiceField(choices=REGIONS_CHOICES, widget=forms.Select())
 ```
 
-
-
-
+<br>
 
 ---
 
-
-
-
+<br>
 
 # ModelForm
 
@@ -143,7 +139,7 @@ def create(request):
 
 
 
-FORM 24p
+FORM 24p부터
 
 
 
