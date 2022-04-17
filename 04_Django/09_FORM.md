@@ -139,7 +139,7 @@ def create(request):
 
 
 
-FORM 24부터
+FORM 24부터..
 
 
 
