@@ -209,4 +209,94 @@ def logout(request):
 
 
 
-사용자인증 52p부터
+<br>
+
+---
+
+<br>
+
+# 로그인 접근 제한
+
+- `request.user.is_authenticated`: 사용자가 인증되었다면 True 반환
+
+  - 권한과는 관련이 없으며, 활성화 상태나 유효한 세션 여부를 확인하지도 않음
+
+- `@login_required`: 로그인되어 있지 않으면, `settings.LOGIN_URL`로 redirect시킴
+
+  - 원래 가려던 경로는 `'next'` 파라미터에 저장, 로그인 완료 후 이동 가능
+
+    ```python
+    def login(request):
+        if requrst.method == 'POST':
+            form = AuthenticationForm(request, request.POST)
+            if form.is_valid():
+                auth_login(request, form.get_user())
+                # next 파라미터에 저장해두었던 경로로 이동
+                # 단, redirect는 GET방식으로 요청하기에, 
+                # next 경로에 @requitre_POST가 붙어있다면 처리 불가
+                return redirect(request.GET.get('next') or 'articles:index')
+    ```
+
+    
+
+<br>
+
+---
+
+<br>
+
+# UserCreationForm
+
+> 새로운 user를 생성하는 ModelForm
+
+
+
+### 필드
+
+- username
+- password1
+- password2 (확인)
+
+```python
+# accounts/urls.py
+
+path('signup/', views.signup, name='signup')
+```
+
+```python
+# accounts/views.py
+
+from django.contrib.auth.forms import UsercreationForm
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            # 회원가입 후 자동로그인
+            auth_login(request, user)
+            return redirect('articles:index')
+    else:
+        form = UserCreationForm()
+    context = {'form': form,}
+    return render(request, 'accounts/signup.html', context)
+```
+
+```django
+<!-- accounts/templates/accounts/signup.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>회원가입</h1>
+  <form action="{% url 'accounts:signup' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit">
+  </form>
+{% endblock content %}
+```
+
+
+
+p.78
