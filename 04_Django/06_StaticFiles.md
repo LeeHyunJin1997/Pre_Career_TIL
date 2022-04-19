@@ -12,7 +12,7 @@
 
 INSTALLED_APPS = [
     '...',
-    'django.conteib.staticfiles',
+    'django.contrib.staticfiles',
 ]
 
 # 탐색할 기본경로(app/static), 경로 추가 
