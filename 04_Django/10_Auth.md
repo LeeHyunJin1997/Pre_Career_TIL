@@ -245,7 +245,7 @@ def logout(request):
 
 <br>
 
-# UserCreationForm
+# 회원가입 (UserCreationForm)
 
 > 새로운 user를 생성하는 ModelForm
 
@@ -299,4 +299,177 @@ def signup(request):
 
 
 
-p.78
+<br>
+
+---
+
+<br>
+
+# 회원탈퇴
+
+```python
+# accounts/urls.py
+
+path('delete/', views.delete, name='delete'),
+```
+
+```python
+# accounts/views.py
+
+from django.views.decorators.http import require_POST
+
+@require_POST
+def delete(request):
+    if request.user.is_authenticated:
+        # 유저 데이터 삭제(탈퇴)
+        request.user.delete()
+        # 탈퇴와 함께 로그아웃, 반드시 탈퇴 후 로그아웃 순
+        auth_logout(request)
+    return redirect('articles:index')
+```
+
+```django
+<!-- base.html -->
+
+<form action="{% url 'accounts:delete' %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="회원탈퇴">
+</form>
+```
+
+
+
+<br>
+
+---
+
+<br>
+
+# 회원정보 수정 (UserChangeForm)
+
+> 사용자의 정보 및 권한을 변경하기 위한 ModelForm
+>
+> 일반 사용자가 접근해서는 안될 fields가 form으로 노출되므로, 반드시 이를 상속한 클래스로 커스텀해 사용
+
+```python
+# accounts/forms.py
+
+from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth import get_user_model
+
+class CustomUserChangeForm(UserVhangeForm):
+    
+    class Meta:
+        # 유저 모델을 가져와 모델로 지정
+        model = get_user_model()
+        fields = ('email', 'first_name', 'last_name',)
+```
+
+```python
+# accounts/urls.py
+
+path('update/', views.update, name='update'),
+```
+
+```python
+# accounts/views.py
+
+from django.contrib.auth.decorators import login_required
+from .forms import CustomUserChangeForm
+
+@login_required
+@require_http_methods(['GET', 'POST'])
+def update(request):
+    if request.method == 'POST':
+        form = CustomUserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('articles:index')
+    else:
+        form = CustomUserChangeForm(instance=request.user)
+    context = {
+        'form': form,
+    }
+    return render(request, 'accounts/update.html', context)
+```
+
+```django
+<!-- accounts/update.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1>회원정보 수정</h1>
+	<form action="{% url 'accounts:update' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit">
+	</form>
+{% endblock content %}
+```
+
+
+
+<br>
+
+---
+
+<br>
+
+# 비밀번호 변경 (PasswordChangeForm)
+
+> 사용자가 비밀번호를 변경할 수 있도록 하는 Form
+>
+> 기존 비밀번호를 입력하지 않아도 변경이 가능한 SetPasswordForm을 상속받아
+>
+> 기존 비밀번호를 입력해야 비밀번호 변경이 가능하도록 만든 서브 클래스
+
+```python
+# accounts/urls.py
+
+path('password/', views.change_password, name='change_password'),
+```
+
+```python
+# accounts/views.py
+
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+
+
+@login_required
+@require_http_methods(['GET', 'POST'])
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            # 비밀번호를 변경할 경우 세션이 바뀌어 사용자는 자동으로 로그아웃
+            # 업데이트된 사용자 정보를 가져오고, 세션을 업데이트해주는 함수
+            update_session_auth_hash(request, form.user)
+            return redirect('articles:index')
+    else:
+        form = PasswordChangeForm(request.user)
+    context = {
+        'form': form,
+    }
+    return render(request, 'accounts/change_password.html', context)
+```
+
+```django
+<!-- accounts/change_password.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1>비밀번호 변경</h1>
+	<form action="{% url 'accounts:change_password' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit">
+	</form>
+{% endblock content %}
+```
+
+
+
