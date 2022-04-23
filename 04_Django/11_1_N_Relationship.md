@@ -60,4 +60,4 @@ class Comment(models.Model):
 
 
 
-p32
+p32부터
