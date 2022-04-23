@@ -11,8 +11,10 @@
 ### Foreign Key 선언
 
 ```python
+# articles/modles.py
+
 class Comment(models.Model):
-    # 필드명은 참조하는 클래스 이름의 소문자(단수형)
+    # 필드명은 참조하는 클래스 이름의 소문자(단수형), comment.article_id 로 접근 가능
     # 부모테이블과 on_delete는 필수 인자
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
     content = models.CharField(max_length=200)
@@ -43,4 +45,19 @@ class Comment(models.Model):
 
   
 
-p.18
+### 참조와 역참조
+
+- 참조(`comment.article`) : 자식객체(N)에서 부모객체(1)를 참조
+- 역참조(`article.comment_set`) : 부모객체(1)에서 자식객체(N)를 참조
+  - `comment_set`은 `Article` 클래스에 실제로 존재하는 관계나 필드가 아님
+
+```python
+class Comment(models.Model):
+    # related_name 옵션으로 comment_set의 호출명을 바꾸어줄 수 있음
+    # 변경 후 article.comment_set은 더이상 사용 불가
+    article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='comments')
+```
+
+
+
+p32
