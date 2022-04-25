@@ -357,7 +357,7 @@ def delete(request):
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth import get_user_model
 
-class CustomUserChangeForm(UserVhangeForm):
+class CustomUserChangeForm(UserChangeForm):
     
     class Meta:
         # 유저 모델을 가져와 모델로 지정
