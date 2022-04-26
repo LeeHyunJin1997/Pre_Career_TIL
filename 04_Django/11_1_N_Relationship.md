@@ -52,6 +52,8 @@ class Comment(models.Model):
   - `comment_set`은 `Article` 클래스에 실제로 존재하는 관계나 필드가 아님
 
 ```python
+# articles/models.py
+
 class Comment(models.Model):
     # related_name 옵션으로 comment_set의 호출명을 바꾸어줄 수 있음
     # 변경 후 article.comment_set은 더이상 사용 불가
@@ -60,4 +62,72 @@ class Comment(models.Model):
 
 
 
-p32부터
+# Comment
+
+> 1 : N에서 N에 해당하는 Comment CRUD
+
+- Create
+
+```python
+# articles/forms.py
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        # 제외해주지 않으면 ForeignKey를 Form에서 사용자가 직접 입력
+       	exclude = ('article',)
+```
+
+```python
+# articles/urls.py
+
+path('<int:pk>/comments/', views.comments_create, name='comments_create'),
+```
+
+```python
+# articles/views.py
+
+# require_safe: GET 혹은 HEAD 요청만 반응하는 데코레이터, 안전한 요청
+@require_safe
+def detail(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    comment_form = CommentForm()
+    context = {
+        'article': article,
+        'comment_form': comment_form,
+    }
+    return render(request, 'articles/detail.html', context)
+
+
+@require_POST
+def comments_create(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    comment_form = CommentForm(request.POST)
+    if comment_form.is_valid():
+        # commit=False: comment_form 객체는 생성하나, 데이터베이스에 반영(저장)하지 않음
+        comment = comment_form.save(commit=False)
+        # 이러한 조작을 위한 객체 생성
+        comment.article = article
+        comment.save()
+    return redirect('articles:detail', article.pk)
+```
+
+```django
+<!-- articles/detail.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <hr>
+    <form action="{% url 'articles:comments_create' article_pk %}" method=POST>
+        {% csrf_token %}
+        {{comment_form}}
+        <input type="submit">
+    </form>
+{% endblock content %}
+```
+
+
+
+40p
