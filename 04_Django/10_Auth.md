@@ -473,3 +473,38 @@ def change_password(request):
 
 
 
+<br>
+
+---
+
+<br>
+
+
+
+# User모델 대체하기
+
+> Django는 내장 User 모델을 재정의(override)할 수 있도록 함
+>
+> 기본 사용자 모델이 충분하더라고 커스텀 모델을 사용하는 것을 권장
+>
+> 첫 마이그레이션 전에 커스텀 모델 작업을 마쳐야함
+>
+> db.sqlite3와 migrations를 삭제해 마이그레이션 초기화 가능
+
+```python
+# accounts/models.py
+
+# AbstractUser을 상속한 커스텀 모델 생성
+from django.contrib.auth.models import AbstractUser
+
+class User(AbstractUser):
+    pass
+```
+
+```python
+# settings.py
+
+# 커스텀 유저 모델 지정
+# default: auth.User
+AUTH_USER_MODEL = 'accounst.User'
+```

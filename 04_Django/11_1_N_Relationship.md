@@ -102,15 +102,19 @@ def detail(request, pk):
 
 @require_POST
 def comments_create(request, pk):
-    article = get_object_or_404(Article, pk=pk)
-    comment_form = CommentForm(request.POST)
-    if comment_form.is_valid():
-        # commit=False: comment_form 객체는 생성하나, 데이터베이스에 반영(저장)하지 않음
-        comment = comment_form.save(commit=False)
-        # 이러한 조작을 위한 객체 생성
-        comment.article = article
-        comment.save()
-    return redirect('articles:detail', article.pk)
+    # 인증된 사용자만 생성가능
+    if request.user.is_authenticated:
+        article = get_object_or_404(Article, pk=pk)
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            # commit=False: comment_form 객체는 생성하나, 데이터베이스에 반영(저장)하지 않음
+            comment = comment_form.save(commit=False)
+            # 이러한 조작을 위한 객체 생성
+            comment.article = article
+            comment.save()
+        return redirect('articles:detail', article.pk)
+    # 인증된 사용자가 아니라면 로그인부터
+    return redirect('accounts:login')
 ```
 
 ```django
@@ -130,4 +134,74 @@ def comments_create(request, pk):
 
 
 
-40p
+- Read
+
+```python
+# articles/views.py
+
+@require_safe
+def detail(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    comment_form = CommentForm()
+    comments = article.comment_set.all()
+    context = {
+        'article': article,
+        'comment_form': comment_form,
+        'comments': comments,
+    }
+    return render(request, 'articles/detail.html', context)
+```
+
+```html
+<!-- articles/detail.html --> 
+
+<hr>
+<h4>댓글 목록</h4>
+<ul>
+    {% for comment in comments %}
+    	<li>{{ comment.content }}</li>
+    {% endfor %}
+</ul>
+```
+
+
+
+- Delete
+
+```python
+# articles/urls.py
+
+path('<int:article_pk>/comments/<int:comment_pk>/delete/', views.comments_delete,
+     name='comments_delete'),
+```
+
+```python
+# articles/views.py
+
+@require_POST
+def comments_delete(request, article_pk, comment_pk):
+    # 인증된 사용자만 삭제 가능
+    if request.user.is_autheticated:
+        comment = get_object_or_404(Comment, pk=comment_pk)
+        comment.delete()
+    return redirect('articles:detail', article_pk)
+```
+
+```html
+<!-- articles/detail.html -->
+
+<h4>댓글 목록</h4>
+  <ul>
+    {% for comment in comments %}
+      <li>
+        {{comment.content}}
+        <form 
+        	action="{% url 'articles:comments_delete' article.pk comment.pk %}" 					method="POST" class="d-inline">
+          {% csrf_token %}
+          <input type="submit" value="DELETE">
+        </form>
+      </li>
+    {% endfor %}
+  </ul>
+```
+
