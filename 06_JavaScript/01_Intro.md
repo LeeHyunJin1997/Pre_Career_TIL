@@ -45,3 +45,8 @@
 - `camelCase`: 변수, 객체, 함수에 사용
 - `PascalCase`: 클래스, 생성자에 사용
 - `SNAKE_CASE`: API_KEY와 같이 변경될 일 없는 상수값에 사용
+
+
+
+
+
