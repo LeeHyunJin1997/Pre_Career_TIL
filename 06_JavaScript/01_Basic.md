@@ -182,3 +182,66 @@ console.log(reqult) //No
 
 
 <br>
+
+---
+
+<br>
+
+
+
+# 조건문
+
+### if
+
+> 소괄호`()`에 조건 작성
+>
+> 중괄호`{}`에 실행할 내용 작성
+>
+> 블록 스코프 생성
+
+```js
+if (condition) {
+    // do something
+} else if (condition) {
+    // do something
+} else {
+    // do something
+}
+```
+
+
+
+### switch
+
+> 표현식과 case문의 값을 비교
+>
+> case에 해당하면 break를 만나거나 default문을 실행할 때까지 다음 조건문 실행
+>
+> 블록 스코프 생성
+
+```js
+switch(expression) {
+  case 'A': {
+    // expression === 'A'일 때 실행할 내용
+    break // break가 없다면 다음 break까지 이어 실행
+  }
+  case 'B': {
+    // expression === 'B'일 때 실행할 내용
+    break
+  }
+  default: {
+    // 어떤 case에도 해당하지 않을 때 실행
+  }
+}
+```
+
+
+
+<br>
+
+---
+
+<br> 
+
+# 반복문
+
