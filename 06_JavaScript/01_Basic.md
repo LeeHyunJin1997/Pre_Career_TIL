@@ -197,7 +197,6 @@ console.log(reqult) //No
 >
 > 중괄호`{}`에 실행할 내용 작성
 >
-> 블록 스코프 생성
 
 ```js
 if (condition) {
@@ -217,7 +216,6 @@ if (condition) {
 >
 > case에 해당하면 break를 만나거나 default문을 실행할 때까지 다음 조건문 실행
 >
-> 블록 스코프 생성
 
 ```js
 switch(expression) {
@@ -244,3 +242,232 @@ switch(expression) {
 <br> 
 
 # 반복문
+
+### while
+
+> 소괄호`()`에 조건문 작성
+>
+> 중괄호`{}`에 실행할 코드 작성
+
+```js
+let i = 0
+
+while (i < 6) {
+  console.log(i)
+  i += 1
+}
+```
+
+
+
+### for
+
+> 초기화, 반복 조건, 실행부가 세미클론(`;`)으로 구분
+
+```js
+for (let i = 0; i < 6; i++) {
+  console.log(i)
+}
+```
+
+
+
+### for ... in
+
+> 객체의 key를 순회
+>
+> 배열을 순회할 수 있지만 권장하지 않음
+
+```js
+const capitals = {
+  korea: 'seoul',
+  france: 'paris',
+  USA: 'washington D.C.'
+}
+
+for (let capital in capitals) {
+  console.log(capital);
+}
+
+// 출력: korea, france, USA
+```
+
+
+
+### for ... of
+
+> 반복 가능한 객체의 값을 순회
+>
+> 대표적으로 배열 순회
+
+```js
+const fruits = ['딸기', '바나나', '메론']
+
+for (let fruit of fruits) {
+  fruit = fruit + '!'
+  console.log(fruit) // 딸기!, 바나나!, 메론!
+}
+
+console.log(fruits); // ['딸기', '바나나', '메론']
+```
+
+
+
+<br>
+
+---
+
+<br>
+
+
+
+# 함수
+
+> 참조타입 중 하나로, function 타입
+>
+> 일급 객체(First-class citizen)에 해당
+>
+> - 변수에 할당 가능
+> - 함수의 매개변수로 전달 가능
+> - 함수의 반환 값으로 사용 가능
+
+
+
+### 함수 선언식
+
+> 함수의 이름과 함께 정의
+>
+> 함수명, 매개변수, 몸통부(중괄호) 존재
+>
+> 호이스팅이 발생해 선언 전에도 호출 가능, 정상 동작
+
+```js
+function add(num1, num2) {
+  return num1 + num2 
+}
+
+// 함수 호출
+add(1, 2)
+```
+
+
+
+### 함수 표현식
+
+> 함수를 표현식 내에서 정의
+>
+> 함수명을 생략 가능(익명 함수)
+>
+> 함수 정의 전 호출 시 에러 발생
+
+```js
+const add = function (num1, num2) {
+  return num1 + num2
+}
+
+add(1, 2)
+```
+
+
+
+### 매개변수
+
+> 매개변수와 인자 개수의 불일치 허용
+>
+> 인자 개수가 많을 경우, 넘치는 부분은 버리고 매개변수로 사용
+>
+> 인자 개수가 적을 경우, 모자라는 인자는 `undefined`로 처리
+>
+> rest parameter(`...`)를 사용해 수가 정해지지 않은 매개변수를 지정, 배열로 받을 수 있음
+>
+> spread operator(`...`)를 이용, 배열을 전개해 인자로 전달 가능
+
+```js
+// 인자 개수가 많을 경우
+const twoArgs = function (arg1, arg2) {
+  return [arg1, arg2]
+}
+
+twoArgs(1, 2, 3) // [1, 2] 
+
+
+// 인자 개수가 적을 경우
+const threeArgs = function (arg1, arg2, arg3) {
+  return [arg1, arg2, arg3]
+}
+
+threeArgs(1) // [1, undefined, undefined]
+```
+
+```js
+// rest parameter
+const restPar = function (arg1, arg2, ...restArgs) {
+  return [arg1, arg2, restArgs]
+}
+
+console.log(restPar(1, 2, 3, 4, 5)) // [1, 2, [3, 4, 5]]
+console.log(restPar(1, 2)) // [1, 2, []]
+
+// spread operator
+const spreadOpr = function (arg1, arg2, arg3) {
+  return arg1 + arg2 + arg3
+}
+
+const numbers = [1, 2, 3]
+console.log(spreadOpr(...numbers)) // 6
+```
+
+
+
+### Arrow Function
+
+> 함수를 보다 간결하게 정의
+>
+> `function`, `()`, `{}` 생략 가능 
+
+```js
+const arrow1 = function (name) {
+  return `hello, ${name}`
+}
+
+// 1. function 키워드 삭제
+const arrow2 = (name) => { return `hello, ${name}` }
+
+// 2. 매개변수가 1개일 경우, () 생략 가능
+const arrow3 = name => { return `hello, ${name}` }
+
+// 3. 중괄호 내부가 return문 하나일 경우 {}와 return 생략 가능
+const arrow4 = name => `hello, ${name}`
+```
+
+
+
+<br>
+
+---
+
+<br>
+
+
+
+# String
+
+### 메서드
+
+- `string.includes(value)` : string에 value의 존재 확인 후 boolean 반환
+- `string.split(value)` : value를 기준으로 나눈 배열을 반환
+  - value가 없을 경우 기존 문자열을 그대로 배열에 넣어 반환
+  - value가 빈 문자열(`''`)일 경우 각 문자 단위로 나눈 배열 반환
+- `string.replace(from, to)` : 가장 앞의 `from`을 `to`로 바꿔 반환
+  - `string.replaceAll(from, to)` : 모든 `from`을 `to`로 바꿔 반환
+- `string.trim()` : 문자열 앞뒤 공백문자(스페이스, 탭, 엔터) 제거
+  - `string.trimStart()` : 문자열 앞 공백문자 제거
+  - `string.trimEnd()` : 문자열 뒤 공백문자 제거
+
+
+
+<br>
+
+---
+
+<br>
