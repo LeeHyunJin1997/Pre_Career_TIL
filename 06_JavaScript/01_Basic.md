@@ -472,4 +472,81 @@ const arrow4 = name => `hello, ${name}`
 
 <br>
 
-...,
+
+
+# Arrays
+
+> 키와 속성을 담고 있는 참조 타입 객체
+>
+> 순서를 보장
+>
+> 음의 정수 접근 불가
+
+```js
+// length를 이용해 인덱스 뒤에서부터 접근하기
+const numbers = [1, 2, 3, 4, 5]
+
+console.log(numbers[numbers.length - 1]) // 5
+```
+
+
+
+### 메서드
+
+- `array.reverse()` : 원본 배열을 거꾸로 정렬
+- `array.push(item)` : 원본 배열 가장 뒤에 item 추가
+- `array.pop()` : 원본 배열의 마지막 요소 제거
+- `array.unshift(item)` : 원본 배열의 가장 앞에 item 추가
+- `array.shift()` : 원본 배열의 첫번째 요소 제거
+- `array.includes(value)` : 배열에 value가 존재하는지 판별한 후 boolean 반환
+- `array.indexOf(value)` : 배열에 value가 존재한다면 먼저 찾은 인덱스를, 존재하지 않는다면 -1 반환
+- `array.join(separator)` : 배열의 각 요소를 separator로 연결해 문자열 반환, 생략시 쉼표가 기본값
+
+
+
+### 배열을 순회하며 콜백함수를 사용하는 메서드
+
+> 콜백함수: 어떤 함수의 내부에서 실행될 목적으로 인자로 넘겨받는 함수
+>
+> 콜백함수의 매개변수: (element, index, array)
+
+```js
+// forEach
+// 배열의 각 요소에 대해 콜백함수를 한번씩 실행
+// 반환 값 없음
+const fruits = ['딸기', '수박', '사과', '체리']
+
+fruits.forEach((fruit, index) => {
+  console.log(fruit, index)
+  // 딸기 0
+  // 수박 1
+  // 사과 2
+  // 체리 3
+})
+```
+
+```js
+// map
+// 배열의 각 요소에 대해 콜백함수를 한번씩 실행 
+// 콜백함수의 반환값들을 모아 새로운 배열 반환
+const numbers = [1, 2, 3, 4, 5]
+
+const doubleNums = numbers.map((num) => {
+  return num * 2
+})
+
+console.log(doublenums) // [2, 4, 6, 8, 10]
+
+// filter
+// 배열의 각 요소에 대해 콜백함수를 한번씩 실행
+// 반환값이 참인 요소를 모아 새로운 배열 반환
+const oddNums = numbers.filter((num, index) => {
+  return num % 2
+})
+
+console.log(oddNums) // 1, 3, 5
+```
+
+
+
+p 129
