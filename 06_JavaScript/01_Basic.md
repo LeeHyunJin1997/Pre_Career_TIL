@@ -509,11 +509,13 @@ console.log(numbers[numbers.length - 1]) // 5
 > 콜백함수: 어떤 함수의 내부에서 실행될 목적으로 인자로 넘겨받는 함수
 >
 > 콜백함수의 매개변수: (element, index, array)
+>
+> 배열의 각 요소에 대해 콜백함수를 한번씩 실행
+
+- `.forEach()`
+  - 반환 값 없음
 
 ```js
-// forEach
-// 배열의 각 요소에 대해 콜백함수를 한번씩 실행
-// 반환 값 없음
 const fruits = ['딸기', '수박', '사과', '체리']
 
 fruits.forEach((fruit, index) => {
@@ -525,10 +527,12 @@ fruits.forEach((fruit, index) => {
 })
 ```
 
+
+
+- `.map()`
+  - 콜백함수의 반환값들을 모아 새로운 배열 반환
+
 ```js
-// map
-// 배열의 각 요소에 대해 콜백함수를 한번씩 실행 
-// 콜백함수의 반환값들을 모아 새로운 배열 반환
 const numbers = [1, 2, 3, 4, 5]
 
 const doubleNums = numbers.map((num) => {
@@ -536,10 +540,15 @@ const doubleNums = numbers.map((num) => {
 })
 
 console.log(doublenums) // [2, 4, 6, 8, 10]
+```
 
-// filter
-// 배열의 각 요소에 대해 콜백함수를 한번씩 실행
-// 반환값이 참인 요소를 모아 새로운 배열 반환
+
+
+- `.filter()`
+  - 반환값이 참인 요소를 모아 새로운 배열 반환
+
+```js
+const numbers = [1, 2, 3, 4, 5]
 const oddNums = numbers.filter((num, index) => {
   return num % 2
 })
@@ -549,4 +558,139 @@ console.log(oddNums) // 1, 3, 5
 
 
 
-p 129...
+- `.reduce()`
+  - 누적을 위한 콜백함수 내의 첫번째 매개변수 `acc`
+  - 모든 콜백함수를 실행한 후 `acc` 반환
+  - `reduce()`의 마지막 매개변수로 `acc`의 초기화를 위한 값 주어짐, 기본값은 기존 배열의 첫번째 값
+
+```js
+const numbers = [1, 2, 3]
+const result = numbers.reduce((acc, num) => {
+  return acc + num
+}, 0)
+
+console.log(result); // 6
+```
+
+
+
+- `.find()`
+  - 반환값이 참인 첫번째 요소 반환
+  - 찾는 값이 배열에 없으면 `undefined` 반환
+
+```js
+const avengers = [
+  { name: 'Tony Stark', age: 45 },
+  { name: 'Steve Rogers', age: 32 },
+  { name: 'Thor', age: 40 },
+]
+
+const result = avengers.find((avengers) => {
+  return avengers.name === 'Tony Stark'
+})
+
+console.log(result) // { name: 'Tony Stark', age: 45 }
+```
+
+
+
+- `.some()`
+  - 요소 중 하나라도 주어진 판별함수가 참이라면 `true` 반환
+  - 빈 배열은 항상 거짓 반환
+
+```js
+const numbers = [1, 3, 5, 7, 9]
+
+const hasEvenNumber = numbers.some((num) => {
+  return num % 2 === 0
+})
+console.log(hasEvenNumber) // false
+
+const hasOddNumber = numbers.some((num) => {
+  return num % 2
+})
+console.log(hasOddNumber) // true
+```
+
+
+
+- `.every()`
+  - 모든 요소가 주어진 판별함수를 통과하면 `true` 반환
+  - 빈 배열은 항상 `true` 반환
+
+```js
+const numbers = [2, 4, 6, 8, 10]
+
+const isEveryNumberEven = numbers.every((num) => {
+  return num % 2 === 0
+})
+console.log(isEveryNumberEven) // true
+
+const isEveryNumberOdd = numbers.every((num) => {
+  return num % 2
+})
+console.log(isEveryNumberOdd) // false
+```
+
+
+
+<br>
+
+---
+
+<br>
+
+
+
+# Objects
+
+> 객체는 속성(property)의 집합이며, 중괄호 내부에 key와 value 쌍으로 표현
+>
+> key는 문자열 타입
+>
+> value는 모든 타입 가능
+>
+> 객체의 요소는 점 또는 대괄호로 가능 (key에 띄어쓰기 같은 구분자가 있으면 대괄호로만 접근 가능)
+
+```js
+const me = {
+  name: 'jack',
+  phoneNumber: '01012345678',
+  'samsung products': {
+    buds: 'Galaxy Buds pro',
+    galaxy: 'Galaxy s20',
+  },
+}
+
+console.log(me.name);                       // jack
+console.log(me.phoneNumber);                // 01012345678
+console.log(me['samsung products']);        // {buds: 'Galaxy Buds pro', galaxy: 'Galaxy s20'}
+console.log(me['samsung products'].buds);   // Galaxy Buds pro
+```
+
+
+
+### this
+
+> 메서드 내에서 `this` 키워드는 해당 객체를 의미함
+
+```js
+const me = {
+  firstName: 'John',
+  lastName: 'Doe',
+  fullName: this.firstName + this.lastName,
+
+  getFullName: function () {
+    return this.firstName + this.lastName
+  }
+}
+
+console.log(me.firstName);        // John
+console.log(me.lastName);         // Doe
+console.log(me.fullName);         // fullName은 메서드가 아니기 때문에 정상 출력되지 않음 (NaN)
+console.log(me.getFullName());    // JohnDoe
+```
+
+
+
+p.141
