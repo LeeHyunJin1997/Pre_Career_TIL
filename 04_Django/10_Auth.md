@@ -506,5 +506,30 @@ class User(AbstractUser):
 
 # 커스텀 유저 모델 지정
 # default: auth.User
+# 프로젝트가 진행되는 동안 변경할 수 없음
 AUTH_USER_MODEL = 'accounst.User'
 ```
+
+
+
+### UserCreationForm, UserChangeForm
+
+> UserCreationForm과 UserChangeForm는 기존 내장 User 모델을 사용하기 때문에,
+>
+> User모델을 대체해준다면 UserCreationForm, UserChangeForm도 커스텀해서 사용해야함
+>
+> 커스텀하지 않았을 때 다음과 같은 오류 발생
+
+![image-20220509014159769](10_Auth.assets/image-20220509014159769.png)
+
+```python
+# accounts/forms.py
+
+class CustomUserCreationForm(UserCreationForm):
+
+    class Meta(UserCreationForm.Meta):
+        # User 모델은 직접 참조하지 않고 get_user_model() 사용
+        model = get_user_model()
+        fields = UserCreationForm.Meta.fields + ('email',)
+```
+

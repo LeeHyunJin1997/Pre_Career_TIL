@@ -191,18 +191,79 @@ def comments_delete(request, article_pk, comment_pk):
 <!-- articles/detail.html -->
 
 <h4>댓글 목록</h4>
-  <ul>
-    {% for comment in comments %}
-      <li>
-        {{comment.content}}
-        <form 
-        	action="{% url 'articles:comments_delete' article.pk comment.pk %}" 					method="POST" class="d-inline">
-          {% csrf_token %}
-          <input type="submit" value="DELETE">
-        </form>
-      </li>
-    {% endfor %}
-  </ul>
+{% if comments %}
+  <p><b>{{ comments|length }}개의 댓글이 있습니다.</b></p>
+{% endif %}
+<ul>
+  {% for comment in comments %}
+    <li>
+      {{comment.content}}
+      <form action="{% url 'articles:comments_delete' article.pk comment.pk %}" method="POST" class="d-inline">
+        {% csrf_token %}
+        <input type="submit" value="DELETE">
+      </form>
+    </li>
+  {% empty %}
+    <p>댓글이 없어요..</p>
+  {% endfor %}
+</ul>
 ```
 
-..
+
+
+# 1:N 모델
+
+```python
+# articles/models.py
+
+class Article(models.Model):
+    # 기존 모델에 user 필드 추가
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    title = models.CharField(max_length=10)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+```
+
+```python
+# articles/forms.py
+
+class ArticleForm(forms.ModelForm):
+
+    class Meta:
+        model = Article
+        # '__all__'이던 필드를 변경하여
+        # 추가된 user 필드가 article을 생성할 form에 드러나는 것을 방지
+        fields = ('title', 'content',)
+```
+
+```python
+# articles/views.py
+
+@login_required
+@require_http_methods(['GET', 'POST'])
+def create(request):
+    if request.method == 'POST':
+        form = ArticleForm(request.POST)
+        if form.is_valid():
+            # 단, user 필드를 입력받지 않으면
+            # NOT NULL consrtaint failed 에러 발생
+            # 따라서 save 전에 article의 user를 자동으로 지정해주는 작업 추가
+            article = form.save(commit=False)
+            article.user = request.user
+            article.save()
+            return redirect('articles:detail', article.pk)
+    else:
+        form = ArticleForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'articles/create.html', context)
+```
+
+
+
+p. 81
