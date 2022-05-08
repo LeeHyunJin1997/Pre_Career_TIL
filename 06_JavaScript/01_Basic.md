@@ -689,8 +689,144 @@ console.log(me.firstName);        // John
 console.log(me.lastName);         // Doe
 console.log(me.fullName);         // fullName은 메서드가 아니기 때문에 정상 출력되지 않음 (NaN)
 console.log(me.getFullName());    // JohnDoe
+
+// class 내의 생성자 함수에서 쓰이는 this는 생성자 함수로 생성되는 객체를 가리킴
+// 메서드, 생성자 함수를 제외한 경우에서 this는 window를 가리킴
+// this를 사용한 함수의 경우, function으로 선언한 함수와 화살표 함수가 다르게 동작함
 ```
 
 
 
-p.141...
+### ES6
+
+> ES6 이후에 도입된 유용한 문법
+
+- 속성명 축약
+
+```js
+// 객체를 정의할 때 key와 할당하는 변수명이 같으면 축약 가능
+
+const books = ['JS', 'Pyhton']
+const magazines = ['Vogue', 'Science']
+
+// 축약 전
+const bookShop1 = {
+  books: books,
+  magazines: magazines,
+}
+
+// 축약 후
+const bookShop2 = {
+  books,
+  magazines,
+}
+
+console.log(bookShop1);
+console.log(bookShop2);
+```
+
+
+
+- 메서드명 축약
+
+```js
+// 메서드 선언 시 function 키워드 생략 가능
+
+// 축약 전
+const obj1 = {
+  greeting: function () {
+    console.log('Hi!');
+  }
+}
+
+// 축약 후
+const obj2 = {
+  greeting() {
+    console.log('Hi!');
+  }
+}
+
+obj1.greeting() // Hi!
+obj2.greeting() // Hi!
+```
+
+
+
+- 계산된 속성
+
+```js
+// 객체를 정의할 때 key를 동적으로 생성 가능
+
+const key = 'regions'
+const value = ['광주', '대전', '구미', '서울']
+
+const ssafy = {
+  [key]: value,
+}
+
+console.log(ssafy);
+// {
+//   regions: ['광주', '대전', '구미', '서울']
+// }
+```
+
+
+
+- 구조 분해 할당
+
+```js
+// 배열 또는 객체를 분해하여 손쉽게 속성을 변수에 할당
+
+const userInformation = {
+  name: 'ssafy kim',
+  userId: 'ssafyStudent1234',
+  phoneNumber: '010-1234-1234',
+  email: 'ssafy@ssafy.com'
+}
+
+// 구조 분해 할당 전
+var name = userInformation.name
+var userId = userInformation.userId
+var phoneNumber = userInformation.phoneNumber
+var email = userInformation.email
+
+// 구조 분해 할당 후
+var { name } = userInformation
+var { userId } = userInformation
+var { phoneNumber } = userInformation
+var { email } = userInformation
+
+// 동시에 여러 변수 선언도 가능
+var { name, userId } = userInformation
+```
+
+
+
+### JSON
+
+> key-value 쌍으로 데이터를 표기하는 표준 포맷
+>
+> 객체와 비슷한 형태이지만 단순한 문자열 타입
+>
+> parsing : 문자열을 객체로 인식하기 위한 구문 분석
+
+- `JSON.parse()` : JSON 파일을 js 객체로 파싱
+- `JSON.stringify()` : js 객체를 JSON 형식(문자열)으로 변경
+
+
+
+<br>
+
+---
+
+<br>
+
+
+
+# Lodash
+
+> https://lodash.com/
+>
+> JS의 자료구조를 다룰 때 사용하는 유용하고 간편한 유틸리티 함수를 제공하는 라이브러리
+>
+> CDN import로 사용가능
