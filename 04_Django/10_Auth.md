@@ -507,7 +507,7 @@ class User(AbstractUser):
 # 커스텀 유저 모델 지정
 # default: auth.User
 # 프로젝트가 진행되는 동안 변경할 수 없음
-AUTH_USER_MODEL = 'accounst.User'
+AUTH_USER_MODEL = 'accounts.User'
 ```
 
 
