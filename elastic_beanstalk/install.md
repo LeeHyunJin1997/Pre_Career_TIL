@@ -12,7 +12,7 @@ pip install --upgrade awsebcli
 
 # 2. EB 내의 EC2 instance에 적용할 Role 생성
 
-[IAM계정 생성하기](../IAM.md)
+[IAM계정 생성하기](IAM_account.md)
 
 
 
