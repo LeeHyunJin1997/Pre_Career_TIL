@@ -12,9 +12,9 @@ AWS는 루트 계정과 IAM 계정을 지원한다.
 
 ### 1. AWS 루트 계정 로그인 - 서비스 - IAM - 사용자 추가
 
-![image-20221012093450166](IAM.assets/image-20221012093450166.png)
+![image-20221012093450166](IAM_account.assets/image-20221012093450166.png)
 
-![image-20221012093543786](IAM.assets/image-20221012093543786.png)
+![image-20221012093543786](IAM_account.assets/image-20221012093543786.png)
 
 
 
@@ -22,7 +22,7 @@ AWS는 루트 계정과 IAM 계정을 지원한다.
 
 - CLI를 사용할 것이므로 엑세스 키 방식 선택
 
-![image-20221012093747862](IAM.assets/image-20221012093747862.png)
+![image-20221012093747862](IAM_account.assets/image-20221012093747862.png)
 
 
 
@@ -31,10 +31,10 @@ AWS는 루트 계정과 IAM 계정을 지원한다.
 - 생성된 그룹이 없으니 기존 정책에 직접 연결
 - `admin` 권한 부여
 
-![image-20221012094143646](IAM.assets/image-20221012094143646.png)
+![image-20221012094143646](IAM_account.assets/image-20221012094143646.png)
 
 
 
 ### 4. 생성 완료
 
-![image-20221012094608194](IAM.assets/image-20221012094608194.png)
+![image-20221012094608194](IAM_account.assets/image-20221012094608194.png)
